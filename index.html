@@ -9,9 +9,9 @@
 <body>
 	<div id='map' style='width: 800px; height: 600px;'></div>
 	<script type='module'>
-		import {geodata} from './geodata.js';
-
+		import { geodata } from './geodata.js';
 		mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y252bncifQ.jc0up60IkKVtmheo0fN4nw';
+		
 		var bounds = [
 			// long, lat
 			[-123.2397, 37.424], // Southwest coordinates
@@ -20,7 +20,7 @@
 
 		var map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/mapbox/light-v10', 
+			style: 'mapbox://styles/mapbox/light-v10',
 			zoom: 11,
 			center: [-122.4594, 37.7349],
 			maxBounds: bounds
@@ -43,6 +43,33 @@
 					'circle-opacity': 0.5,
 				}
 			});
+		});
+
+		map.on('click', 'points', function (e) {
+			let coordinates = e.features[0].geometry.coordinates.slice();
+			let name = e.features[0].properties.name;
+			let price = e.features[0].properties.price;
+			let num_bedrooms = Math.trunc(e.features[0].properties.bedrooms);
+			let num_bathrooms = Math.trunc(e.features[0].properties.bathrooms);
+			let num_beds = Math.trunc(e.features[0].properties.beds);
+			let num_accommodate = Math.trunc(e.features[0].properties.accommodates);
+			
+			while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+				coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+			}
+
+			new mapboxgl.Popup()
+				.setLngLat(coordinates)
+				.setHTML('<center><h3>' + name + '</h4><p>'+ num_bedrooms + ' bed, ' + num_bathrooms + ' bath</p><p>Accommodates ' + num_accommodate + ' guests</p></center>')
+				.addTo(map);
+		});
+
+		map.on('mouseenter', 'points', function () {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+		map.on('mouseleave', 'points', function () {
+			map.getCanvas().style.cursor = '';
 		});
 	</script>
 </body>
