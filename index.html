@@ -11,7 +11,7 @@
 	<script type='module'>
 		import { geodata } from './geodata.js';
 		mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y252bncifQ.jc0up60IkKVtmheo0fN4nw';
-		
+
 		var bounds = [
 			// long, lat
 			[-123.2397, 37.424], // Southwest coordinates
@@ -39,7 +39,14 @@
 				paint:
 				{
 					'circle-radius': 3.5,
-					'circle-color': 'gray',
+					"circle-color": ["case",
+						[">=", ["to-number", ["get", "review_scores_rating"]], 85],
+						"green", 
+						[">=", ["to-number", ["get", "review_scores_rating"]], 60], 
+						"yellow", 
+						["==", ["to-number", ["get", "review_scores_rating"]], 0],
+						"gray", "red"
+					],
 					'circle-opacity': 0.5,
 				}
 			});
@@ -53,14 +60,15 @@
 			let num_bathrooms = Math.trunc(e.features[0].properties.bathrooms);
 			let num_beds = Math.trunc(e.features[0].properties.beds);
 			let num_accommodate = Math.trunc(e.features[0].properties.accommodates);
-			
+			let rating = Math.trunc(e.features[0].properties.review_scores_rating);
+
 			while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 				coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 			}
 
 			new mapboxgl.Popup()
 				.setLngLat(coordinates)
-				.setHTML('<center><h3>' + name + '</h4><p>'+ num_bedrooms + ' bed, ' + num_bathrooms + ' bath</p><p>Accommodates ' + num_accommodate + ' guests</p></center>')
+				.setHTML('<center><h3>' + name + '</h4><p>' + num_bedrooms + ' bed, ' + num_bathrooms + ' bath</p><p>Accommodates ' + num_accommodate + ' guest(s)</p><p>' + 'Rating: ' + rating + '</p></center>')
 				.addTo(map);
 		});
 
