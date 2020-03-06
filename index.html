@@ -1,21 +1,50 @@
 <html>
+
 <head>
 	<title>San Francisco AirBNBs</title>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-
 </head>
+
 <body>
 	<div id='map' style='width: 800px; height: 600px;'></div>
-	<script>
+	<script type='module'>
+		import {geodata} from './geodata.js';
+
 		mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y252bncifQ.jc0up60IkKVtmheo0fN4nw';
-		
+		var bounds = [
+			// long, lat
+			[-123.2397, 37.424], // Southwest coordinates
+			[-120.181, 37.933033] // Northeast coordinates
+		];
+
 		var map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/mapbox/light-v10', zoom: 11,
-			center: [-122.4594, 37.7349]
+			style: 'mapbox://styles/mapbox/light-v10', 
+			zoom: 11,
+			center: [-122.4594, 37.7349],
+			maxBounds: bounds
 		});
 
+		map.on('load', () => {
+			map.addSource('points', {
+				type: 'geojson',
+				data: geodata
+			});
+
+			map.addLayer({
+				id: 'points',
+				type: 'circle',
+				source: 'points',
+				paint:
+				{
+					'circle-radius': 3.5,
+					'circle-color': 'gray',
+					'circle-opacity': 0.5,
+				}
+			});
+		});
 	</script>
 </body>
+
 </html>
