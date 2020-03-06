@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>San Francisco AirBNBs</title>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+	<div id='map' style='width: 800px; height: 600px;'></div>
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y252bncifQ.jc0up60IkKVtmheo0fN4nw';
+		
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/light-v10', zoom: 11,
+			center: [-122.4594, 37.7349]
+		});
+
+	</script>
+</body>
+</html>
