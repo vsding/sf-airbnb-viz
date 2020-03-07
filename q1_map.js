@@ -1,4 +1,5 @@
 import { geodata } from './geodata.js';
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y252bncifQ.jc0up60IkKVtmheo0fN4nw';
 
 let renderMap = () => {
