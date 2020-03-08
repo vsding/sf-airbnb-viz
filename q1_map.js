@@ -6,7 +6,7 @@ let renderMap = () => {
     var bounds = [
         // long, lat
         [-122.9397, 37.424], // Southwest coordinates
-        [-120.181, 37.933033] // Northeast coordinates
+        [-121.981, 37.933033] // Northeast coordinates
     ];
 
     var map = new mapboxgl.Map({
@@ -29,10 +29,8 @@ let renderMap = () => {
             source: 'points',
             paint: {
                 'circle-radius': 3.5,
-                "circle-color": ["case", [">=", ["to-number", ["get", "review_scores_rating"]], 90],
-                    "green", [">=", ["to-number", ["get", "review_scores_rating"]], 70],
-                    "yellow", ["==", ["to-number", ["get", "review_scores_rating"]], 0],
-                    "gray", "red"
+                "circle-color": ["case", [">", ["to-number", ["get", "review_scores_rating"]], 90], "green", [">", ["to-number", ["get", "review_scores_rating"]], 70], "yellow", ["==", ["to-number", ["get", "review_scores_rating"]], 0], "gray",
+                    "red"
                 ],
                 'circle-opacity': 0.7,
             }

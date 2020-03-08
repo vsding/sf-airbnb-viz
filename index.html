@@ -4,42 +4,54 @@
     <title>San Francisco AirBNBs</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/map.css">
+    <link rel="stylesheet" href="./css/article.css">
 </head>
 
 <body>
-    <div id="sliderContainer">
-        <label for="slider"></br>Maximum rating: <span id="sliderVal"></span></br></br></label>
-        <input id="slider" type="range" min="0" max="100" step="1" value="70" />
+    <div class="article">
+        <div class="titleSection">
+            <h1 class="title">
+                sf airbnbs
+            </h1>
+            <ul class="attribution">
+                <li>By Maurice Chiang, Vedi Chaudhri, Victoria Ding</li>
+                <li>March 16, 2020</li>
+            </ul>
+        </div>
+        <p class="introText drop-cap">
+            San Francisco INTRO duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo
+            cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.
+        </p>
+
+        <!-- slider -->
+        <div id="sliderContainer">
+            <label for="slider"></br>Maximum rating: <span id="sliderVal"></span></br></br></label>
+            <input id="slider" type="range" min="0" max="100" step="1" value="70" />
+        </div>
+        <script>
+            var slider = document.getElementById("slider");
+            var output = document.getElementById("sliderVal");
+            output.innerHTML = slider.value;
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+        </script>
+
+        <!-- q1. map -->
+        <div id='mapContainer'>
+            <input id="toggleListingsButton" type="button" value="Show unrated listings" />
+            <div id='map'></div>
+        </div>
+        <script type='module'>
+            import { renderMap } from './q1_map.js'; renderMap();
+        </script>
+
+        <div class="bodyText">
+            Caption 1 blah blah blah
+        </div>
     </div>
-    <script>
-        var slider = document.getElementById("slider");
-        var output = document.getElementById("sliderVal");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-    </script>
-
-    <!-- q1 -->
-    <div id='mapContainer'>
-        <input id="toggleListingsButton" type="button" value="Show unrated listings" />
-        <div id='map'></div>
-    </div>
-    <script type='module'>
-        import { renderMap } from './q1_map.js'; renderMap();
-    </script>
-
-
-    <!-- q2 -->
-    <!-- <div></div>
-	<script></script> -->
-
-    <!-- q2 -->
-    <!-- <div></div>
-	<script></script> -->
 </body>
 
 </html>
