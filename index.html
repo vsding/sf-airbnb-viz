@@ -1,29 +1,32 @@
 <html>
 
 <head>
-	<title>San Francisco AirBNBs</title>
-	<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
-	<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-	<link rel="stylesheet" href="style.css">
+    <title>San Francisco AirBNBs</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<label id="rating_range"></label>
-	<input id="slider" type="range" min="0" max="100" step="1" defaultValue="0" />
+    <label id="rating_range"></label>
+    <input id="slider" type="range" min="0" max="100" step="1" />
 
-	<!-- q1 -->
-	<div id='map'></div>
-	<script type='module'>
-		import { renderMap } from './q1_map.js';
-		renderMap();
-	</script>
+    <!-- q1 -->
+    <div id='mapContainer'>
+        <input id="toggleListingsButton" type="button" value="Show unrated listings" />
+        <div id='map'></div>
+    </div>
+    <script type='module'>
+        import { renderMap } from './q1_map.js'; renderMap();
+    </script>
 
-	<!-- q2 -->
-	<!-- <div></div>
+
+    <!-- q2 -->
+    <!-- <div></div>
 	<script></script> -->
 
-	<!-- q2 -->
-	<!-- <div></div>
+    <!-- q2 -->
+    <!-- <div></div>
 	<script></script> -->
 </body>
 
