@@ -5,11 +5,23 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="map.css">
 </head>
 
 <body>
-    <label id="rating_range"></label>
-    <input id="slider" type="range" min="0" max="100" step="1" />
+    <div id="sliderContainer">
+        <label for="slider"></br>Maximum rating: <span id="sliderVal"></span></br></br></label>
+        <input id="slider" type="range" min="0" max="100" step="1" value="70" />
+    </div>
+    <script>
+        var slider = document.getElementById("slider");
+        var output = document.getElementById("sliderVal");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
 
     <!-- q1 -->
     <div id='mapContainer'>

@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y
 let renderMap = () => {
     var bounds = [
         // long, lat
-        [-123.2397, 37.424], // Southwest coordinates
+        [-122.9397, 37.424], // Southwest coordinates
         [-120.181, 37.933033] // Northeast coordinates
     ];
 
@@ -13,7 +13,7 @@ let renderMap = () => {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         zoom: 11,
-        center: [-122.4594, 37.7349],
+        center: [-122.4594, 37.75],
         maxBounds: bounds
     });
 
@@ -41,11 +41,11 @@ let renderMap = () => {
         function filterByRating(num, map) {
             var filter = ['<=', ["to-number", ["get", "review_scores_rating"]], num];
             map.setFilter('points', filter);
-            document.getElementById('rating_range').textContent = `Rating <= ${num}`;
+            document.getElementById('slider').innerText = `${num}`;
         }
 
-        filterByRating(50, map);
-        hideUnrated(50);
+        filterByRating(70, map);
+        hideUnrated(70);
 
         var shouldHideUnrated = true;
 
@@ -75,6 +75,7 @@ let renderMap = () => {
 
         document.getElementById('slider').addEventListener('input', function(e) {
             let ratingThreshold = parseInt(e.target.value, 10);
+            document.getElementById('slider').innerText = ratingThreshold;
             filterByRating(ratingThreshold, map);
             if (shouldHideUnrated) {
                 hideUnrated(ratingThreshold);
