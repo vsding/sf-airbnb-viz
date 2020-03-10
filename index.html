@@ -4,9 +4,13 @@
     <title>San Francisco AirBNBs</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/map.css">
     <link rel="stylesheet" href="./css/article.css">
+    <link rel="stylesheet" href="./css/q2_1.css">
 </head>
 
 <body>
@@ -21,8 +25,11 @@
             </ul>
         </div>
         <p class="introText drop-cap">
-            San Francisco INTRO duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo
-            cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.
+            San Francisco INTRO duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor
+            sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim
+            veniam dolor dolor irure velit commodo
+            cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non
+            laborum adipisicing aliqua ea nisi sint.
         </p>
 
         <!-- slider -->
@@ -34,7 +41,7 @@
             var slider = document.getElementById("slider");
             var output = document.getElementById("sliderVal");
             output.innerHTML = slider.value;
-            slider.oninput = function() {
+            slider.oninput = function () {
                 output.innerHTML = this.value;
             }
         </script>
@@ -51,6 +58,54 @@
         <div class="bodyText">
             Caption 1 blah blah blah
         </div>
+        <div id="q2_container">
+            <h3>Host Response Rate vs. Rating </h3>
+            <div id='q2Container_1'></div>
+            <script type='module'>
+                import { render_q2_response_rate } from './q2.js'; render_q2_response_rate();
+            </script>
+            <div class=" bodyText">Figure 1: [TODO: add description]
+            </div>
+            <h3>Minimum Nights vs. Rating </h3>
+            <div id='q2Container_2'></div>
+            <script type='module'>
+                import { render_q2_2 } from './q2.js'; render_q2_2();
+            </script>
+            <div class="bodyText">Figure 2: [TODO: add description]
+            </div>
+            <h3>Reviews per Month vs. Rating </h3>
+            <div id='q2Container_3'></div>
+            <script type='module'>
+                import { render_q2_3 } from './q2.js'; render_q2_3();
+            </script>
+            <div class="bodyText">Figure 3: [TODO: add description]
+            </div>
+            <h3>Cleaning Fee vs. Cleanliness Rating </h3>
+            <div id='q2Container_4'></div>
+            <script type='module'>
+                import { render_q2_4 } from './q2.js'; render_q2_4();
+            </script>
+            <div class="bodyText">Figure 4: [TODO: add description]
+            </div>
+            <h3>Price per Person vs. Rating </h3>
+            <div id='q2Container_5'></div>
+            <script type='module'>
+                import { render_q2_5 } from './q2.js'; render_q2_5();
+            </script>
+            <div class="bodyText">Figure 5: [TODO: add description]
+            </div>
+            <h3>Host is Superhost vs. Rating -- FIX!!! </h3>
+            <div id='q2Container_6'></div>
+            <script type='module'>
+                import { render_q2_6 } from './q2.js'; render_q2_6();
+            </script>
+            <div class="bodyText">Figure 6: [TODO: add description]
+            </div>
+
+        </div>
+        <!-- <script type='module'>
+            import { render_q2_response_rate, render_q2_2 } from './q2.js'; render_q2_response_rate();
+        </script> -->
     </div>
 </body>
 
