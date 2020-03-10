@@ -1,13 +1,15 @@
 <html>
 
 <head>
-    <title>San Francisco AirBNBs</title>
+    <title>San Francisco AirBNB</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <!-- <script src="https://d3js.org/d3.v5.min.js">
+    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <link rel="stylesheet" href="./css/style.css">
+
     <link rel="stylesheet" href="./css/map.css">
     <link rel="stylesheet" href="./css/article.css">
     <link rel="stylesheet" href="./css/q2_1.css">
@@ -15,24 +17,42 @@
 
 <body>
     <div class="article">
+        <!-- title -->
         <div class="titleSection">
-            <h1 class="title">
-                sf airbnbs
+            <h1>
+                What affects AirBnb customer ratings?
             </h1>
-            <ul class="attribution">
-                <li>By Maurice Chiang, Vedi Chaudhri, Victoria Ding</li>
-                <li>March 16, 2020</li>
-            </ul>
+            <h2>
+                An investigation of San Francisco Airbnb listings
+            </h2>
+            <h3 class='attribution'>
+                By Maurice Chiang, Vedi Chaudhri, Victoria Ding</br>
+                March 16, 2020
+            </h3>
         </div>
-        <p class="introText drop-cap">
-            San Francisco INTRO duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor
-            sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim
-            veniam dolor dolor irure velit commodo
-            cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non
-            laborum adipisicing aliqua ea nisi sint.
+
+
+        <!-- intro -->
+        <p class="bodyText drop-cap">
+            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people
+            from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in
+            the city for anywhere from one night
+            to several months. In addition to factors such as location and price, ratings play a significant role in
+            whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to
+            make decisions. What factors
+            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the
+            textual description of the listing affect its ratings?
         </p>
 
-        <!-- slider -->
+        <p class="bodyText">
+            The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above
+            90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red.
+            Unrated listings are shown in gray.
+            For the purposes of this article, we will define a poor rating as one that is 70 or below.
+
+        </p>
+
+        <!-- q1 viz -->
         <div id="sliderContainer">
             <label for="slider"></br>Maximum rating: <span id="sliderVal"></span></br></br></label>
             <input id="slider" type="range" min="0" max="100" step="1" value="70" />
@@ -46,7 +66,6 @@
             }
         </script>
 
-        <!-- q1. map -->
         <div id='mapContainer'>
             <input id="toggleListingsButton" type="button" value="Show unrated listings" />
             <div id='map'></div>
@@ -54,9 +73,12 @@
         <script type='module'>
             import { renderMap } from './q1_map.js'; renderMap();
         </script>
-
         <div class="bodyText">
-            Caption 1 blah blah blah
+            The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70
+            and below scattered across the city. While there are no glaring patterns in the location of poorly rated
+            listings, it seems that there is a slightly
+            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and
+            Tenderloin neighborhoods.
         </div>
         <div id="q2_container">
             <h3>Host Response Rate vs. Rating </h3>
@@ -106,6 +128,7 @@
         <!-- <script type='module'>
             import { render_q2_response_rate, render_q2_2 } from './q2.js'; render_q2_response_rate();
         </script> -->
+
     </div>
 </body>
 
