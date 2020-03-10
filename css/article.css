@@ -1,24 +1,33 @@
+h1 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.231;
+    margin-top: 75px;
+    margin-bottom: 25px;
+    font-family: "Heebo", sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 25px;
+    font-style: italic;
+    font-weight: lighter;
+    font-family: "Heebo", sans-serif;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 25px;
+    font-weight: lighter;
+    font-family: "Heebo", sans-serif;
+}
+
 .titleSection {
     text-align: center;
 }
 
-.title {
-    font-size: 48px;
-    font-weight: 500;
-    line-height: 1.231;
-    margin-top: 50px;
-    margin-bottom: 0.8rem;
-    font-family: "Heebo", sans-serif;
-}
-
 .attribution {
-    list-style: none;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1.778;
-    margin-left: 0;
-    color: #000000;
-    font-family: "Heebo", sans-serif;
+    color: dimgrey;
 }
 
 .article {
@@ -38,20 +47,26 @@
     color: #000000;
 }
 
-.introText {
+.bodyText {
     font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 300;
-    font-size: 18px;
+    font-weight: 100;
+    font-size: 20px;
     line-height: 1.833;
     margin-bottom: 3.6rem;
     color: #000000;
 }
 
-.bodyText {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 100;
-    font-size: 16px;
-    line-height: 1.833;
-    margin-bottom: 3.6rem;
-    color: #000000;
+p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: small;
+}
+
+label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 8px;
+}
+
+input {
+    border: 0;
+    outline: none;
 }
