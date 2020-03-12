@@ -5,15 +5,15 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidnNkaW5nIiwiYSI6ImNrN2ZwbGhndTAwZDEzaW80Y2s3Y
 let renderMap = () => {
     var bounds = [
         // long, lat
-        [-122.9397, 37.424], // Southwest coordinates
-        [-121.981, 37.933033] // Northeast coordinates
+        [-122.6597, 37.624], // Southwest coordinates
+        [-122.291, 37.933033] // Northeast coordinates
     ];
 
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
-        zoom: 11,
-        center: [-122.4594, 37.75],
+        zoom: 10,
+        center: [-122.4394, 37.76],
         maxBounds: bounds
     });
 

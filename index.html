@@ -8,11 +8,10 @@
     </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-    <link rel="stylesheet" href="./css/style.css">
-
-    <link rel="stylesheet" href="./css/map.css">
-    <link rel="stylesheet" href="./css/article.css">
-    <link rel="stylesheet" href="./css/q2_1.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/map.css">
+    <link rel="stylesheet" type="text/css" href="./css/article.css">
+    <link rel="stylesheet" type="text/css" href="./css/q2_1.css">
 </head>
 
 <body>
@@ -34,20 +33,13 @@
 
         <!-- intro -->
         <p class="bodyText drop-cap">
-            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people
-            from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in
-            the city for anywhere from one night
-            to several months. In addition to factors such as location and price, ratings play a significant role in
-            whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to
-            make decisions. What factors
-            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the
-            textual description of the listing affect its ratings?
+            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in the city for anywhere from one night
+            to several months. In addition to factors such as location and price, ratings play a significant role in whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to make decisions. What factors
+            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the textual description of the listing affect its ratings?
         </p>
 
         <p class="bodyText">
-            The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above
-            90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red.
-            Unrated listings are shown in gray.
+            The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above 90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red. Unrated listings are shown in gray.
             For the purposes of this article, we will define a poor rating as one that is 70 or below.
 
         </p>
@@ -56,12 +48,20 @@
         <div id="sliderContainer">
             <label for="slider"></br>Maximum rating: <span id="sliderVal"></span></br></br></label>
             <input id="slider" type="range" min="0" max="100" step="1" value="70" />
+            <div class="legendContainer">
+                <ul class="legend">
+                    <li><span class="red"></span> &#8804; 70%</li>
+                    <li><span class="yellow"></span> 71 - 90%</li>
+                    <li><span class="green"></span> 91 - 100%</li>
+                </ul>
+            </div>
+
         </div>
         <script>
             var slider = document.getElementById("slider");
             var output = document.getElementById("sliderVal");
             output.innerHTML = slider.value;
-            slider.oninput = function () {
+            slider.oninput = function() {
                 output.innerHTML = this.value;
             }
         </script>
@@ -74,11 +74,8 @@
             import { renderMap } from './q1_map.js'; renderMap();
         </script>
         <div class="bodyText">
-            The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70
-            and below scattered across the city. While there are no glaring patterns in the location of poorly rated
-            listings, it seems that there is a slightly
-            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and
-            Tenderloin neighborhoods.
+            The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70 and below scattered across the city. While there are no glaring patterns in the location of poorly rated listings, it seems that there is a slightly
+            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and Tenderloin neighborhoods.
         </div>
         <div id="q2_container">
             <h3>Host Response Rate vs. Rating </h3>
@@ -123,7 +120,6 @@
             </script>
             <div class="bodyText">Figure 6: [TODO: add description]
             </div>
-
         </div>
         <div id="q3_container">
             <h3>An Analysis of the Text in AirBnB Summaries</h3>
