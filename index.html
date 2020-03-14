@@ -121,15 +121,38 @@
             <div class="bodyText">Figure 6: [TODO: add description]
             </div>
         </div>
-        <div id="q3_container">
-            <h3>An Analysis of the Text in AirBnB Summaries</h3>
+        <h2>An Analysis of the Text in AirBnB Summaries</h2>
+        <div style="position:relative;"id="q3_bad_container">
+            <h3>The baddies</h3>
+            <div id="baddies">
             <div style="float:left;width:45%" id="baddies">
             </div>
-            <div style="float:right;width:45%" id="q3tooltip">
+            <div style="float:right;width:45%" id="baddies_q3tooltip">
             </div>
-            <script src="q3.js"></script>
-
         </div>
+        <div style="position:relative;" id="q3_good_container">
+            <h3>The goodies</h3>
+            <div id="goodies">
+                <div style="float:left;width:45%" id="goodies">
+                </div>
+                <div style="float:right;width:45%" id="goodies_q3tooltip">
+                </div>
+            </div>
+        </div>
+
+        <div style="position:relative;">
+            <h3>The text area</h3>
+
+            <div contentEditable="true" id="paragraphEdit" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+        </div>
+
+        <div style="position:relative;">
+            <h3>The text area</h3>
+
+            <div contentEditable="true" id="bop" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+        </div>
+
+        <script src="q3.js"></script>
         <!-- <script type='module'>
             import { render_q2_response_rate, render_q2_2 } from './q2.js'; render_q2_response_rate();
         </script> -->

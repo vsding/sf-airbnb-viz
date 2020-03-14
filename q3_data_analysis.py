@@ -36,6 +36,10 @@ trigram_bot = dict(Counter(trigrams_low))
 trigram_bot = {k: v for k, v in sorted(trigram_bot.items(), key=lambda item: item[1], reverse=True)}
 res = {key: trigram_top[key] - trigram_bot.get(key, 0) for key in trigram_top.keys()} 
 
+# with open('q3_bot_total_list.csv', 'w', newline='') as file:
+# 	writer = csv.writer(file)
+	 
+
 best_trigrams = set(list(trigram_top)[:100]) - set(list(trigram_bot)[:100])
 worst_trigrams = set(list(trigram_bot)[:100]) - set(list(trigram_top)[:100])
 

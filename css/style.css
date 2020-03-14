@@ -21,3 +21,11 @@ input {
     border: 0;
     outline: none;
 }
+
+.q3bodyText {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 1.833;
+    color: #000000;
+}
