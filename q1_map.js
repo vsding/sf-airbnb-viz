@@ -81,24 +81,37 @@ let renderMap = () => {
         });
     });
 
+    var marker;
+    var nameText = document.getElementById('name');
+    var neighborhoodText = document.getElementById('neighborhood');
+    var priceText = document.getElementById('price');
+    var numGuestsText = document.getElementById('numGuests');
+    var ratingText = document.getElementById('rating');
+
     map.on('click', 'points', function(e) {
-        let coordinates = e.features[0].geometry.coordinates.slice();
+        // let coordinates = e.features[0].geometry.coordinates.slice();
         let name = e.features[0].properties.name;
         let price = e.features[0].properties.price;
-        let num_bedrooms = Math.trunc(e.features[0].properties.bedrooms);
-        let num_bathrooms = Math.trunc(e.features[0].properties.bathrooms);
-        let num_beds = Math.trunc(e.features[0].properties.beds);
+        let neighborhood = e.features[0].properties.neighbourhood_cleansed;
         let num_accommodate = Math.trunc(e.features[0].properties.accommodates);
         let rating = e.features[0].properties.review_scores_rating;
 
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        if (marker != null) {
+            marker.remove();
         }
 
-        new mapboxgl.Popup({ className: 'mapPopup' })
-            .setLngLat(coordinates)
-            .setHTML('<center><h3>' + name + '</h4><p>' + price + ' per night</p><p>' + num_bedrooms + ' bed, ' + num_bathrooms + ' bath, accommodates ' + num_accommodate + '</p><p>' + 'Rating: ' + rating + '</p></center>')
+        marker = new mapboxgl.Marker({
+                color: '#60a3bc',
+            }).setLngLat(e.features[0].geometry.coordinates)
             .addTo(map);
+
+        if (e.features.length > 0) {
+            nameText.textContent = name;
+            neighborhoodText.textContent = neighborhood;
+            priceText.textContent = price;
+            numGuestsText.textContent = num_accommodate;
+            ratingText.textContent = rating;
+        }
     });
 
     map.on('mouseenter', 'points', function() {
