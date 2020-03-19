@@ -36,47 +36,56 @@ let renderMap = () => {
             }
         });
 
-        function filterByRating(num, map) {
-            var filter = ['<=', ["to-number", ["get", "review_scores_rating"]], num];
-            map.setFilter('points', filter);
-            document.getElementById('slider').innerText = `${num}`;
-        }
-
-        filterByRating(70, map);
-        hideUnrated(70);
-
-        var shouldHideUnrated = true;
-
-        function hideUnrated(ratingThreshold) {
-            var filter = ["all", ['>', ["to-number", ["get", "review_scores_rating"]], 0],
-                ['<=', ["to-number", ["get", "review_scores_rating"]], ratingThreshold]
+        function filterByRating(min, max) {
+            var filter = ['all', ['<=', ["to-number", ["get", "review_scores_rating"]], max],
+                ['>=', ["to-number", ["get", "review_scores_rating"]], min]
             ];
             map.setFilter('points', filter);
         }
 
-        var button = document.getElementById('toggleListingsButton');
+        filterByRating(20, 70);
+
+        var shouldShowUnrated = false;
+
+        function showUnrated(min, max) {
+            var filter = ['any', ['all', ['<=', ["to-number", ["get", "review_scores_rating"]], max],
+                    ['>=', ["to-number", ["get", "review_scores_rating"]], min]
+                ],
+                ['==', ["to-number", ["get", "review_scores_rating"]], 0],
+                ['==', ["get", "review_scores_rating"], ""]
+
+            ];
+            map.setFilter('points', filter);
+        }
+
+        let button = document.getElementById('toggleListingsButton');
         button.addEventListener('click', updateButton);
 
+        let slider = document.getElementById('slider');
+        let minRating = Number(slider.getAttribute("data-value-min"));
+        let maxRating = Number(slider.getAttribute("data-value-max"));
+
         function updateButton() {
-            shouldHideUnrated = !shouldHideUnrated;
+            shouldShowUnrated = !shouldShowUnrated;
             if (button.value === 'Hide unrated listings') {
                 button.value = 'Show unrated listings';
             } else {
                 button.value = 'Hide unrated listings';
             }
-            if (shouldHideUnrated) {
-                hideUnrated(Number(document.getElementById('slider').value));
+            if (shouldShowUnrated) {
+                showUnrated(minRating, maxRating);
             } else { // filter by rating only
-                filterByRating(Number(document.getElementById('slider').value), map);
+                filterByRating(minRating, maxRating);
             }
         }
 
-        document.getElementById('slider').addEventListener('input', function(e) {
-            let ratingThreshold = parseInt(e.target.value, 10);
-            document.getElementById('slider').innerText = ratingThreshold;
-            filterByRating(ratingThreshold, map);
-            if (shouldHideUnrated) {
-                hideUnrated(ratingThreshold);
+        slider.addEventListener('change', function(e) {
+            let vals = e.detail.val.split(",");
+            minRating = Number(vals[0]);
+            maxRating = Number(vals[1]);
+            filterByRating(minRating, maxRating);
+            if (shouldShowUnrated) {
+                showUnrated(minRating, maxRating);
             }
         });
     });
