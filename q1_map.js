@@ -98,7 +98,6 @@ let renderMap = () => {
     var ratingText = document.getElementById('rating');
 
     map.on('click', 'points', function(e) {
-        // let coordinates = e.features[0].geometry.coordinates.slice();
         let name = e.features[0].properties.name;
         let price = e.features[0].properties.price;
         let neighborhood = e.features[0].properties.neighbourhood_cleansed;
@@ -109,9 +108,10 @@ let renderMap = () => {
             marker.remove();
         }
 
-        marker = new mapboxgl.Marker({
-                color: '#60a3bc',
-            }).setLngLat(e.features[0].geometry.coordinates)
+        var markerElem = document.createElement('div');
+        markerElem.setAttribute("class", "pin");
+
+        marker = new mapboxgl.Marker(markerElem).setLngLat(e.features[0].geometry.coordinates)
             .addTo(map);
 
         if (e.features.length > 0) {
