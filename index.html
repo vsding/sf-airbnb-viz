@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>San Francisco AirBNB</title>
+    <title>An Analysis of San Francisco AirBnBs</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
     <!-- <script src="https://d3js.org/d3.v5.min.js">
@@ -20,14 +20,14 @@
         <!-- title -->
         <div class="titleSection">
             <h1>
-                What affects AirBnb customer ratings?
+                What affects customer ratings of AirBnB listings in San Francisco?
             </h1>
             <h2>
-                An investigation of San Francisco Airbnb listings
+                An investigation of San Francisco AirBnBs
             </h2>
             <h3 class='attribution'>
                 By Maurice Chiang, Vedi Chaudhri, Victoria Ding</br>
-                March 16, 2020
+                March 27, 2020
             </h3>
         </div>
 
@@ -123,17 +123,26 @@
             <div class="bodyText">Figure 6: [TODO: add description]
             </div>
         </div>
-        <h2>An Analysis of the Text in AirBnB Summaries</h2>
+        <div class="bodyText">
+            Given all this context, let's take a deeper dive into what hosts are saying in the best and worst AirBnBs. We looked at trigrams -- or sets of three words -- in these clusters: we defined the "low-rated" properties to have a score of less than 70, and a "high-rated" property to have the max score (the most commmon). We listed out trigrams that were mututally exclusive (i.e appear in only the top or bottom buckets). Interestingly, there's a fairly noticable difference.
+        </div>
+        <div class="bodyText">
+            We found that the worst rated AirBnBs typically advertised that they host entrepreneurs, and were a "startup community." In general, these tend to be hacker houses: they're cramped, dorm-like, and expensive. In fact, some report cockroaches, unsafe environments, and price gouging. Problems include issues with electric wiring, fire safety, and gas odors. A report in Reuters suggested that these facilities take affordable housing and make it unaffordable; capitalizing on enterprising individuals moving to San Francisco to build a better future. 
+        </div>
         <div style="position:relative;" id="q3_bad_container">
-            <h3>The baddies</h3>
+            <h3><b> Phrases from the Worst Rated AirBnBs in San Francisco</h3>
             <div id="baddies">
                 <div style="float:left;width:45%" id="baddies">
                 </div>
                 <div style="float:right;width:45%" id="baddies_q3tooltip">
                 </div>
             </div>
+            <div class="bodyText">
+            <br>
+            The best rated AirBnBs, on the other hand, stayed away from talking about Silicon Valley and the allure of the technology industry -- these AirBnBs talked more about "San Francisco", the beauty of the attractions (i.e. the Golden Gate Bridge), and the rich and premium products they offier (nice bedding, amenities, and products).
+            </div>
             <div style="position:relative;" id="q3_good_container">
-                <h3>The goodies</h3>
+                <h3><b> Phrases from the Best Rated AirBnBs in San Francisco</h3>
                 <div id="goodies">
                     <div style="float:left;width:45%" id="goodies">
                     </div>
@@ -141,23 +150,25 @@
                     </div>
                 </div>
             </div>
-
+        <div class="bodyText">
+            <br>
+            These insights highlight the differences in language used between the top and bottom AirBnB listings. However, we'd encourage you to take these results with a grain of salt. Many of these trigrams exist in the same posts -- this is largely driven by the fact that AirBnB is dominated by third party providers (i.e Zeus Living) that have dozens of properties with the same listing titles. Given the fact they they're a corperate entity, many of their properties adhere to similar property standards (both good and bad), so they're biased towards the top or bottom of the rankings. Given that, it is evident that the best and worst AirBnBs cater to different audiences -- one towards visitors looking for a luxurious experience, and another towards hackers and geeks coming for the gold rush. 
+        </div>
+        <div class="bodyText">
+            Now, get ready for something cool. Above, we listed the trigrams from the top and bottom AirBnB listings. Below, you'll have access to the whole dataset. Try and type out an AirBnB listing -- if you type a trigram that appears in the top set or the bottom set, it'll highlight as you type. Top trigrams will highlight in green, and bottom trigrams will highlight in red. Trigrams are case-insensitive, and can appear with or without punctuation -- your choice. So get started typing! 
+        </div>
             <div style="position:relative;">
-                <h3>The text area</h3>
+                <h3><b> Create your AirBnB Listing Descrption Below </h3>
 
-                <div contentEditable="true" id="paragraphEdit" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+                <div contentEditable="true" id="paragraphEdit" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">Type Here</div>
             </div>
 
-            <div style="position:relative;">
-                <h3>The text area</h3>
-
-                <div contentEditable="true" id="bop" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+            <div class="bodyText">
+                <br><br><br><br><br>
+                Through this article, we've characterized various aspects of AirBnB listings in San Francisco. From the location of the AirBnB, to various aspects of the AirBnB listing, like price, responsiveness, and number nights, to the actual text used in the AirBnB listing itself, there are many factors that influence if an AirBnB listing will be rated highly by users. Ultimately, AirBnB hosts that emphasize providing a quality experience throughout both the booking and staying process end up getting the highest ratings. There's no substitute for care. 
             </div>
 
             <script src="q3.js"></script>
-            <!-- <script type='module'>
-            import { render_q2_response_rate, render_q2_2 } from './q2.js'; render_q2_response_rate();
-        </script> -->
 
         </div>
 </body>
