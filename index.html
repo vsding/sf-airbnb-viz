@@ -36,12 +36,15 @@
         <p class="bodyText drop-cap">
             San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in the city for anywhere from one night
             to several months. In addition to factors such as location and price, ratings play a significant role in whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to make decisions. What factors
-            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the textual description of the listing affect its ratings?
+            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the textual description of the listing correspond to its ratings?
         </p>
 
         <p class="bodyText">
             The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above 90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red. Unrated listings are shown in gray.
-            For the purposes of this article, we will define a poor rating as one that is 70 or below.
+            For the purposes of this article, we define a poor rating as one that is 70 or below.
+        </p>
+        <p class="bodyText">
+            Play around with the slider below to view listings with different ratings. Click on a point to learn more about it.
         </p>
 
         <!-- q1 viz -->
@@ -58,13 +61,12 @@
                     <li><span class="green"></span> 91 - 100%</li>
                 </ul>
             </div>
-
         </div>
 
         <div id='mapContainer'>
             <div id='listingInfo'>
                 <div><strong>Listing:</strong> <span id='name'></span></div>
-                <div><strong>Neighborhood: </strong><span id='neighborhood'></span></div>
+                <div><strong>Neighborhood:</strong> <span id='neighborhood'></span></div>
                 <div><strong>Price:</strong> <span id='price'></span></div>
                 <div><strong>Guests:</strong> <span id='numGuests'></span></div>
                 <div><strong>Rating:</strong> <span id='rating'></span></div>
@@ -75,10 +77,12 @@
         <script type='module'>
             import { renderMap } from './q1_map.js'; renderMap();
         </script>
+
         <div class="bodyText">
             The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70 and below scattered across the city. While there are no glaring patterns in the location of poorly rated listings, it seems that there is a slightly
-            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and Tenderloin neighborhoods.
+            higher density of Airbnbs with poor ratings near the northeast of the city, in the Downtown/Civic Center neighborhood.
         </div>
+
         <div id="q2_container">
             <h3>Host Response Rate vs. Rating </h3>
             <div id='q2Container_1'></div>
@@ -124,10 +128,13 @@
             </div>
         </div>
         <div class="bodyText">
-            Given all this context, let's take a deeper dive into what hosts are saying in the best and worst AirBnBs. We looked at trigrams -- or sets of three words -- in these clusters: we defined the "low-rated" properties to have a score of less than 70, and a "high-rated" property to have the max score (the most commmon). We listed out trigrams that were mututally exclusive (i.e appear in only the top or bottom buckets). Interestingly, there's a fairly noticable difference.
+            Given all this context, let's take a deeper dive into what hosts are saying in the best and worst AirBnBs. We looked at trigrams -- or sets of three words -- in these clusters: we defined the "low-rated" properties to have a score of less than 70, and
+            a "high-rated" property to have the max score (the most commmon). We listed out trigrams that were mututally exclusive (i.e appear in only the top or bottom buckets). Interestingly, there's a fairly noticable difference.
         </div>
         <div class="bodyText">
-            We found that the worst rated AirBnBs typically advertised that they host entrepreneurs, and were a "startup community." In general, these tend to be hacker houses: they're cramped, dorm-like, and expensive. In fact, some report cockroaches, unsafe environments, and price gouging. Problems include issues with electric wiring, fire safety, and gas odors. A report in Reuters suggested that these facilities take affordable housing and make it unaffordable; capitalizing on enterprising individuals moving to San Francisco to build a better future. 
+            We found that the worst rated AirBnBs typically advertised that they host entrepreneurs, and were a "startup community." In general, these tend to be hacker houses: they're cramped, dorm-like, and expensive. In fact, some report cockroaches, unsafe environments,
+            and price gouging. Problems include issues with electric wiring, fire safety, and gas odors. A report in Reuters suggested that these facilities take affordable housing and make it unaffordable; capitalizing on enterprising individuals moving
+            to San Francisco to build a better future.
         </div>
         <div style="position:relative;" id="q3_bad_container">
             <h3><b> Phrases from the Worst Rated AirBnBs in San Francisco</h3>
