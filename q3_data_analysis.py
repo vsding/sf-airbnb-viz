@@ -43,43 +43,60 @@ res = {key: trigram_top[key] - trigram_bot.get(key, 0) for key in trigram_top.ke
 best_trigrams = set(list(trigram_top)[:100]) - set(list(trigram_bot)[:100])
 worst_trigrams = set(list(trigram_bot)[:100]) - set(list(trigram_top)[:100])
 
+best_trigrams_expand = set(list(trigram_top)[:1000]) - set(list(trigram_bot)[:1000])
+worst_trigrams_expand = set(list(trigram_bot)[:1000]) - set(list(trigram_top)[:1000])
+
 for trigram in best_trigrams: 
 	str_search = trigram[0] + " " + trigram[1] + " " + trigram[2]
-	print(str_search)
+	# print(str_search)
 	top = (top_rated[top_rated['summary'].str.contains(str_search, na=False)])
 	if (top.empty): 
-		print("None") 
+		# print("None") 
 	else: 
-		print (top['summary'].iloc[0])
-		print (top['summary'].iloc[1])
+		# print (top['summary'].iloc[0])
+		# print (top['summary'].iloc[1])
+
+with open('q3_bot_total_list.csv', 'w', newline='') as file: 
+	writer = csv.writer(file)
+	writer.writerow(['trigram'])
+	for trigram in worst_trigrams_expand: 
+		str_search = trigram[0] + " " + trigram[1] + " " + trigram[2]
+		writer.writerow([str_search])
+
+with open('q3_top_total_list.csv', 'w', newline='') as file: 
+	writer = csv.writer(file)
+	writer.writerow(['trigram'])
+	for trigram in best_trigrams_expand: 
+		str_search = trigram[0] + " " + trigram[1] + " " + trigram[2]
+		writer.writerow([str_search])
 
 with open('q3_bot.csv', 'w', newline='') as file: 
 	writer = csv.writer(file)
 	writer.writerow(['trigram', 'text'])
 	for trigram in worst_trigrams: 
 		str_search = trigram[0] + " " + trigram[1] + " " + trigram[2]
-		print(str_search)
+		# print(str_search)
 		bot = (low_rated[low_rated['summary'].str.contains(str_search, na=False)])
 		if (bot.empty): 
-			print("None") 
+			# print("None") 
 		else: 
 			writer.writerow([str_search, bot['summary'].iloc[0]])
-			print (bot['summary'].iloc[0])
-			print (bot['summary'].iloc[1])
+			# print (bot['summary'].iloc[0])
+			# print (bot['summary'].iloc[1])
 
 with open('q3_top.csv', 'w', newline='') as file: 
 	writer = csv.writer(file)
 	writer.writerow(['trigram', 'text'])
 	for trigram in best_trigrams: 
 		str_search = trigram[0] + " " + trigram[1] + " " + trigram[2]
-		print(str_search)
+		# print(str_search)
 		top = (top_rated[top_rated['summary'].str.contains(str_search, na=False)])
 		if (top.empty): 
-			print("None") 
+			# print("None") 
 		else: 
 			writer.writerow([str_search, top['summary'].iloc[0]])
-			print (top['summary'].iloc[0])
-			print (top['summary'].iloc[1])
+			# print (top['summary'].iloc[0])
+			# print (top['summary'].iloc[1])
 
 
 bigram_top = dict(Counter(bigrams_top))

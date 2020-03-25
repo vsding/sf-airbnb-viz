@@ -69,8 +69,30 @@ function setup_q3(q3_div_id, tooltip_id, class_type, data)
 }
 
 
-var good_trigrams = ['Golden Gate Bridge', 'fully equipped kitchen'];
-var bad_trigrams = ['We host entrepreneurs', 'Silicon Valley experience'];
+var good_trigrams = [];
+var bad_trigrams = [];
+
+d3.csv('q3_bot_total_list.csv', function(data) {
+	for (var e in data) {
+		if (data[e].trigram) {
+			console.log(data[e].trigram)
+			bad_trigrams.push(data[e].trigram);
+		}
+	}
+});
+
+d3.csv('q3_top_total_list.csv', function(data) {
+	for (var e in data) {
+		if (data[e].trigram) {
+			console.log(data[e].trigram)
+			good_trigrams.push(data[e].trigram);
+		}
+	}
+});
+
+console.log(good_trigrams)
+console.log(bad_trigrams)
+
 
 var input_form = document.getElementById("paragraphEdit");
 input_form.addEventListener("input", function (event) {
@@ -110,7 +132,7 @@ function in_dict(array, dict)
 	var full = array.join(' ');
 	for (var e in dict)
 	{
-		if (full.trimLeft().trimRight().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase() === dict[e].toLowerCase())
+		if (full.trimLeft().trimRight().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase() === dict[e].toString().toLowerCase())
 			return true;
 	}
 	return false;
