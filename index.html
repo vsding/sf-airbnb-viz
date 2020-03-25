@@ -8,6 +8,7 @@
     </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/picasso.js"></script> -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/map.css">
     <link rel="stylesheet" type="text/css" href="./css/article.css">
@@ -33,13 +34,20 @@
 
         <!-- intro -->
         <p class="bodyText drop-cap">
-            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in the city for anywhere from one night
-            to several months. In addition to factors such as location and price, ratings play a significant role in whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to make decisions. What factors
-            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the textual description of the listing affect its ratings?
+            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people
+            from all around the world. Airbnbs have become an increasingly popular lodging option for people staying in
+            the city for anywhere from one night
+            to several months. In addition to factors such as location and price, ratings play a significant role in
+            whether or not someone decides to stay in a certain Airbnb; customers rely heavily on what others think to
+            make decisions. What factors
+            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the
+            textual description of the listing affect its ratings?
         </p>
 
         <p class="bodyText">
-            The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above 90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red. Unrated listings are shown in gray.
+            The map below shows all current Airbnb listings in the city of San Francisco. Airbnbs with a rating of above
+            90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red.
+            Unrated listings are shown in gray.
             For the purposes of this article, we will define a poor rating as one that is 70 or below.
 
         </p>
@@ -61,7 +69,7 @@
             var slider = document.getElementById("slider");
             var output = document.getElementById("sliderVal");
             output.innerHTML = slider.value;
-            slider.oninput = function() {
+            slider.oninput = function () {
                 output.innerHTML = this.value;
             }
         </script>
@@ -81,12 +89,57 @@
             import { renderMap } from './q1_map.js'; renderMap();
         </script>
         <div class="bodyText">
-            The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70 and below scattered across the city. While there are no glaring patterns in the location of poorly rated listings, it seems that there is a slightly
-            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and Tenderloin neighborhoods.
+            The majority of rated Airbnbs have a rating of at least 90, and there are listings with ratings of under 70
+            and below scattered across the city. While there are no glaring patterns in the location of poorly rated
+            listings, it seems that there is a slightly
+            higher density of Airbnbs with poor ratings near the northeast of the city, in the Union Square and
+            Tenderloin neighborhoods.
         </div>
         <div id="q2_container">
+            <h2>What leads to a higher rating?</h2>
+            <div class="bodyText">In the next part of our study, we wanted to understand why certain Airbnbs have a
+                higher or lower rating than other Airbnbs. To examine this, we also grouped the airbnbs by neighborhood,
+                in order to better see the distributions of the ratings across the neighborhoods. </div>
             <h3>Host Response Rate vs. Rating </h3>
-            <div id='q2Container_1'></div>
+            <div id="picasso_container" style="height: 100%; position: relative;"></div>
+            <div class="bodyText">Figure 2: Through this chart, we can see that hosts that have a high level of
+                interactivity, have a wider range of ratings. In constrast, hosts with lower levels of interactivity
+                have a smaller range in airbnb scores. The range of ratings for lower response rates is higher than the
+                range of ratings for higher reponse rates. There could be some underlying factors that contribute to
+                this. For example, hosts that respond often might use language that could be offensive to the airbnb
+                guests. From this, it seems like slow response rates of airbnb hosts won't affect the ratings adversely.
+            </div>
+            <h3>Minimum Nights vs. Rating </h3>
+            <div id="picasso_container2" style="height: 100%; position: relative;"></div>
+            <div class="bodyText">Figure 3: We then wanted to understand if the minimum number of nights that the guests
+                had to stay in the airbnb affected the rating of the airbnb. Notice that most of the minimum number of
+                nights center around a few days or monthly basis. The airbnbs with a high number of minimum nights (more
+                than 1 month), has a lower range in the ratings, whereas there is a lot more variance in ratings for
+                airbnbs with shorter minimum night stays. A possible explanation for this could be that there is less
+                maintenance involved if guests stay for a longer time (such as cleaning of the airbnb) and there could
+                be more ammenities available which could lead to higher ratings by the guests that stay in those places.
+            </div>
+            <div class="bodyText"> </div>
+            <div class="bodyText"> Figures 2 indicates that airbnbs with a lower host response rate tend to have a
+                smaller range of ratings with a higher median rating. Figure 3 indicateds that airbnbs that have higher
+                minimum night stays tend to have a
+                smaller range of ratings with a higher median rating. Overall this indicates possible ways that airbnb
+                hosts can have higher ratings. This leads to the question of if hosts can change anything else in their
+                listings to get a higher rating.
+            </div>
+            <div class="bodyText"> </div>
+            <div class="bodyText">One of the biggest parts of the listing that hosts have control over is the
+                description of their listing. In the next section, we explored how the descriptions of the Airbnbs
+                affected their ratings.
+            </div>
+
+            <script src="https://unpkg.com/picasso.js">
+            </script>
+            <script type='module'>
+                import { plot } from './pic.js'; plot();
+            </script>
+            <!-- Don't delete the commented code below until we're sure about the visualizations -->
+            <!-- <div id='q2Container_1'></div>
             <script type='module'>
                 import { render_q2_response_rate } from './q2.js'; render_q2_response_rate();
             </script>
@@ -126,7 +179,7 @@
                 import { render_q2_6 } from './q2.js'; render_q2_6();
             </script>
             <div class="bodyText">Figure 6: [TODO: add description]
-            </div>
+            </div> -->
         </div>
         <h2>An Analysis of the Text in AirBnB Summaries</h2>
         <div style="position:relative;" id="q3_bad_container">
@@ -150,19 +203,21 @@
             <div style="position:relative;">
                 <h3>The text area</h3>
 
-                <div contentEditable="true" id="paragraphEdit" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+                <div contentEditable="true" id="paragraphEdit"
+                    style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">
+                    You Favorite Movie</div>
             </div>
 
             <div style="position:relative;">
                 <h3>The text area</h3>
 
-                <div contentEditable="true" id="bop" style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">You Favorite Movie</div>
+                <div contentEditable="true" id="bop"
+                    style="font-family:'IBM Plex Sans'; font-weight: 100; font-size: 18px; line-height: 1.833; color: black;">
+                    You Favorite Movie</div>
             </div>
 
             <script src="q3.js"></script>
-            <!-- <script type='module'>
-            import { render_q2_response_rate, render_q2_2 } from './q2.js'; render_q2_response_rate();
-        </script> -->
+
 
         </div>
 </body>
