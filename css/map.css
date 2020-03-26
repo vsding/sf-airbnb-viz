@@ -1,11 +1,14 @@
 #sliderContainer {
     height: 160px;
-    width: 100%;
+    width: 70%;
     background-color: #f0f0f0;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #mapContainer {
+    width: 70%;
     height: 500px;
     margin-left: auto;
     margin-right: auto;

@@ -1,246 +1,284 @@
 var pic1;
 var pic2;
 let plot = () => {
-  d3.csv('./data/q2_1_c.csv', function(data) {
-    data.forEach(function(d) {
-      d.host_response_rate = +d.host_response_rate.slice(0, -1);
-      d.review_scores_rating = +d.review_scores_rating;
-      d.id = +d.id;
-      d.neighbourhood = d.neighbourhood_cleansed;
+    d3.csv('./data/q2_1_c.csv', function(data) {
+        data.forEach(function(d) {
+            d.host_response_rate = +d.host_response_rate.slice(0, -1);
+            d.review_scores_rating = +d.review_scores_rating;
+            d.id = +d.id;
+            d.neighbourhood = d.neighbourhood_cleansed;
+        });
+        plot_chart(data);
     });
-    plot_chart(data);
-  });
-  d3.csv('./data/q2_2_c.csv', function(data) {
-    data.forEach(function(d) {
-      d.minimum_nights = +d.minimum_nights;
-      d.review_scores_rating = +d.review_scores_rating;
-      d.id = +d.id;
-      d.neighbourhood = d.neighbourhood_cleansed;
+    d3.csv('./data/q2_2_c.csv', function(data) {
+        data.forEach(function(d) {
+            d.minimum_nights = +d.minimum_nights;
+            d.review_scores_rating = +d.review_scores_rating;
+            d.id = +d.id;
+            d.neighbourhood = d.neighbourhood_cleansed;
+        });
+        plot_chart2(data);
     });
-    plot_chart2(data);
-  });
 };
 
 let plot_chart2 = data => {
-  pic2 = picasso.chart({
-    element: document.querySelector('#picasso_container2'),
-    data: [
-      {
-        type: 'matrix',
-        data: data
-      }
-    ],
-    settings: {
-      scales: {
-        yy: {
-          data: {
-            field: 'review_scores_rating'
-          },
-          invert: true,
-          expand: 0.1
-        },
-        xx: {
-          data: {
-            field: 'minimum_nights'
-          },
-          expand: 0.1
-        },
-        col: {
-          data: { extract: { field: 'neighbourhood' } },
-          type: 'color'
-        }
-      },
-      components: [
-        // {
-        //   type: 'legend-cat',
-        //   scale: 'col',
-        //   dock: 'right',
-        //   brush: {
-        //     trigger: [
-        //       {
-        //         contexts: ['highlight'],
-        //         on: 'tap',
-        //         action: 'toggle'
-        //       }
-        //     ],
-        //     consume: [
-        //       {
-        //         context: 'highlight',
-        //         style: {
-        //           inactive: {
-        //             opacity: 0.4
-        //           }
-        //         }
-        //       }
-        //     ]
-        //   }
-        // },
+    pic2 = picasso.chart({
+        element: document.querySelector('#picasso_container2'),
+        data: [{
+            type: 'matrix',
+            data: data
+        }],
+        settings: {
+            scales: {
+                yy: {
+                    data: {
+                        field: 'review_scores_rating'
+                    },
+                    invert: true,
+                    expand: 0.1
+                },
+                xx: {
+                    data: {
+                        field: 'minimum_nights'
+                    },
+                    expand: 0.1
+                },
+                col: {
+                    data: { extract: { field: 'neighbourhood' } },
+                    type: 'color'
+                }
+            },
+            components: [{
+                    // type: 'legend-cat',
+                    // scale: 'col',
+                    // dock: 'right',
+                    // brush: {
+                    //     trigger: [{
+                    //         contexts: ['highlight'],
+                    //         on: 'tap',
+                    //         action: 'toggle'
+                    //     }],
+                    //     consume: [{
+                    //         context: 'highlight',
+                    //         style: {
+                    //             inactive: {
+                    //                 opacity: 0.4
+                    //             }
+                    //         }
+                    //     }]
+                    // }
+                },
 
-        {
-          type: 'axis',
-          scale: 'yy',
-          dock: 'left'
-        },
-        {
-          type: 'axis',
-          scale: 'xx',
-          dock: 'bottom'
-        },
-        {
-          type: 'point',
-          data: {
-            extract: {
-              field: 'neighbourhood',
-              props: {
-                y: { field: 'review_scores_rating' },
-                mar: { field: 'minimum_nights' },
-                fill: { field: 'neighbourhood' }
-              }
-            }
-          },
-          settings: {
-            x: { scale: 'xx', ref: 'mar' },
-            y: { scale: 'yy' },
-            size: () => 0.05,
-            opacity: 0.9,
-            fill: { scale: 'col' }
-          }
-          //   brush: {
-          //     trigger: [
-          //       {
-          //         contexts: ['highlight'],
-          //         on: 'tap',
-          //         action: 'toggle',
-          //         data: ['fill']
-          //       }
-          //     ],
-          //     consume: [
-          //       {
-          //         context: 'highlight',
-          //         style: {
-          //           inactive: {
-          //             opacity: 0
-          //           }
-          //         }
-          //       }
-          //     ]
-          //   }
+                {
+                    type: 'axis',
+                    scale: 'yy',
+                    dock: 'left'
+                },
+                {
+                    type: 'axis',
+                    scale: 'xx',
+                    dock: 'bottom'
+                },
+                {
+                    type: 'point',
+                    data: {
+                        extract: {
+                            field: 'neighbourhood',
+                            props: {
+                                y: { field: 'review_scores_rating' },
+                                mar: { field: 'minimum_nights' },
+                                fill: { field: 'neighbourhood' }
+                            }
+                        }
+                    },
+                    settings: {
+                        x: { scale: 'xx', ref: 'mar' },
+                        y: { scale: 'yy' },
+                        size: () => 0.05,
+                        opacity: 0.9,
+                        fill: { scale: 'col' }
+                    },
+                    brush: {
+                        trigger: [{
+                            contexts: ['highlight'],
+                            on: 'tap',
+                            action: 'toggle',
+                            data: ['fill']
+                        }],
+                        consume: [{
+                            context: 'highlight',
+                            style: {
+                                inactive: {
+                                    opacity: 0
+                                }
+                            }
+                        }]
+                    }
+                },
+                {
+                    type: 'text',
+                    text: 'Rating',
+                    anchor: 'center',
+                    dock: 'left',
+                    style: {
+                        text: { fontSize: '16px' }
+
+                    }
+                },
+                {
+                    type: 'text',
+                    text: 'Minimum nights',
+                    anchor: 'center',
+                    dock: 'bottom',
+                    style: {
+                        text: { fontSize: '16px' }
+
+                    }
+                },
+                {
+                    type: 'text',
+                    text: 'Rating vs. Minimum Nights',
+                    anchor: 'center',
+                    dock: 'top',
+                    style: {
+                        text: { fontSize: '18px' }
+
+                    }
+                },
+            ]
         }
-      ]
-    }
-  });
-  pic1.brush('highlight').link(pic2.brush('highlight'));
-  //pic2.brush('highlight').link(pic1.brush('highlight'));
+    });
+    pic1.brush('highlight').link(pic2.brush('highlight'));
+    // pic2.brush('highlight').link(pic1.brush('highlight'));
 };
 
 //#picasso_container  neighbourhood  review_scores_rating host_response_rate
 let plot_chart = data => {
-  pic1 = picasso.chart({
-    element: document.querySelector('#picasso_container'),
-    data: [
-      {
-        type: 'matrix',
-        data: data
-      }
-    ],
-    settings: {
-      scales: {
-        yy: {
-          data: {
-            field: 'review_scores_rating'
-          },
-          invert: true,
-          expand: 0.1
-        },
-        xx: {
-          data: {
-            field: 'host_response_rate'
-          },
-          expand: 0.1
-        },
-        col: {
-          data: { extract: { field: 'neighbourhood' } },
-          type: 'color'
-        }
-      },
-      components: [
-        {
-          type: 'legend-cat',
-          scale: 'col',
-          dock: 'right',
-          brush: {
-            trigger: [
-              {
-                contexts: ['highlight'],
-                on: 'tap',
-                action: 'toggle'
-              }
-            ],
-            consume: [
-              {
-                context: 'highlight',
-                style: {
-                  inactive: {
-                    opacity: 0.4
-                  }
+    pic1 = picasso.chart({
+        element: document.querySelector('#picasso_container'),
+        data: [{
+            type: 'matrix',
+            data: data
+        }],
+        settings: {
+            scales: {
+                yy: {
+                    data: {
+                        field: 'review_scores_rating'
+                    },
+                    invert: true,
+                    expand: 0.1
+                },
+                xx: {
+                    data: {
+                        field: 'host_response_rate'
+                    },
+                    expand: 0.1
+                },
+                col: {
+                    data: { extract: { field: 'neighbourhood' } },
+                    type: 'color'
                 }
-              }
+            },
+            components: [{
+                    type: 'legend-cat',
+                    scale: 'col',
+                    dock: 'right',
+                    brush: {
+                        trigger: [{
+                            contexts: ['highlight'],
+                            on: 'tap',
+                            action: 'toggle'
+                        }],
+                        consume: [{
+                            context: 'highlight',
+                            style: {
+                                inactive: {
+                                    opacity: 0.4
+                                }
+                            }
+                        }]
+                    }
+                },
+                {
+                    type: 'axis',
+                    scale: 'yy',
+                    dock: 'left'
+                },
+                {
+                    type: 'axis',
+                    scale: 'xx',
+                    dock: 'bottom'
+                },
+                {
+                    type: 'point',
+                    data: {
+                        extract: {
+                            field: 'neighbourhood',
+                            props: {
+                                y: { field: 'review_scores_rating' },
+                                mar: { field: 'host_response_rate' },
+                                fill: { field: 'neighbourhood' }
+                            }
+                        }
+                    },
+                    settings: {
+                        x: { scale: 'xx', ref: 'mar' },
+                        y: { scale: 'yy' },
+                        size: () => 0.05,
+                        opacity: 0.9,
+                        fill: { scale: 'col' }
+                    },
+                    brush: {
+                        trigger: [{
+                            contexts: ['highlight'],
+                            on: 'tap',
+                            action: 'toggle',
+                            data: ['fill']
+                        }],
+                        consume: [{
+                            context: 'highlight',
+                            style: {
+                                inactive: {
+                                    opacity: 0
+                                }
+                            }
+                        }]
+                    }
+                },
+                // {
+                //     type: 'text',
+                //     text: 'Rating',
+                //     anchor: 'center',
+                //     dock: 'left',
+                //     style: {
+                //         text: { fontSize: '16px' }
+
+                //     }
+                // },
+                {
+                    type: 'text',
+                    text: 'Response rate',
+                    anchor: 'center',
+                    dock: 'bottom',
+                    style: {
+                        text: { fontSize: '16px' }
+
+                    }
+                },
+                {
+                    type: 'text',
+                    text: 'Rating vs. Host Response Rate',
+                    anchor: 'center',
+                    dock: 'top',
+                    style: {
+                        text: { fontSize: '18px' }
+
+                    }
+                },
             ]
-          }
-        },
-        {
-          type: 'axis',
-          scale: 'yy',
-          dock: 'left'
-        },
-        {
-          type: 'axis',
-          scale: 'xx',
-          dock: 'bottom'
-        },
-        {
-          type: 'point',
-          data: {
-            extract: {
-              field: 'neighbourhood',
-              props: {
-                y: { field: 'review_scores_rating' },
-                mar: { field: 'host_response_rate' },
-                fill: { field: 'neighbourhood' }
-              }
-            }
-          },
-          settings: {
-            x: { scale: 'xx', ref: 'mar' },
-            y: { scale: 'yy' },
-            size: () => 0.05,
-            opacity: 0.9,
-            fill: { scale: 'col' }
-          },
-          brush: {
-            trigger: [
-              {
-                contexts: ['highlight'],
-                on: 'tap',
-                action: 'toggle',
-                data: ['fill']
-              }
-            ],
-            consume: [
-              {
-                context: 'highlight',
-                style: {
-                  inactive: {
-                    opacity: 0
-                  }
-                }
-              }
-            ]
-          }
         }
-      ]
-    }
-  });
+    });
 };
 
 export { plot };
