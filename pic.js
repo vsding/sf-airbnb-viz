@@ -104,33 +104,33 @@ let plot_chart2 = data => {
             size: () => 0.05,
             opacity: 0.9,
             fill: { scale: 'col' }
+          },
+          brush: {
+            trigger: [
+              {
+                contexts: ['highlight'],
+                on: 'tap',
+                action: 'none',
+                data: ['fill']
+              }
+            ],
+            consume: [
+              {
+                context: 'highlight',
+                style: {
+                  inactive: {
+                    opacity: 0
+                  }
+                }
+              }
+            ]
           }
-          //   brush: {
-          //     trigger: [
-          //       {
-          //         contexts: ['highlight'],
-          //         on: 'tap',
-          //         action: 'toggle',
-          //         data: ['fill']
-          //       }
-          //     ],
-          //     consume: [
-          //       {
-          //         context: 'highlight',
-          //         style: {
-          //           inactive: {
-          //             opacity: 0
-          //           }
-          //         }
-          //       }
-          //     ]
-          //   }
         }
       ]
     }
   });
   pic1.brush('highlight').link(pic2.brush('highlight'));
-  //pic2.brush('highlight').link(pic1.brush('highlight'));
+  pic2.brush('highlight').link(pic1.brush('highlight'));
 };
 
 //#picasso_container  neighbourhood  review_scores_rating host_response_rate
