@@ -49,24 +49,24 @@ let plot_chart2 = data => {
                 }
             },
             components: [{
-                    // type: 'legend-cat',
-                    // scale: 'col',
-                    // dock: 'right',
-                    // brush: {
-                    //     trigger: [{
-                    //         contexts: ['highlight'],
-                    //         on: 'tap',
-                    //         action: 'toggle'
-                    //     }],
-                    //     consume: [{
-                    //         context: 'highlight',
-                    //         style: {
-                    //             inactive: {
-                    //                 opacity: 0.4
-                    //             }
-                    //         }
-                    //     }]
-                    // }
+                    type: 'legend-cat',
+                    scale: 'col',
+                    dock: 'right',
+                    brush: {
+                        trigger: [{
+                            contexts: ['highlight'],
+                            on: 'tap',
+                            action: 'toggle'
+                        }],
+                        consume: [{
+                            context: 'highlight',
+                            style: {
+                                inactive: {
+                                    opacity: 0.4
+                                }
+                            }
+                        }]
+                    }
                 },
 
                 {
@@ -149,7 +149,7 @@ let plot_chart2 = data => {
         }
     });
     pic1.brush('highlight').link(pic2.brush('highlight'));
-    // pic2.brush('highlight').link(pic1.brush('highlight'));
+    pic2.brush('highlight').link(pic1.brush('highlight'));
 };
 
 //#picasso_container  neighbourhood  review_scores_rating host_response_rate
