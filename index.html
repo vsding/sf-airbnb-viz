@@ -35,25 +35,17 @@
 
         <!-- intro -->
         <p class="bodyText drop-cap">
-            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people
-            from all around the world. AirBnBs have become an increasingly popular lodging option for people staying in
-            the city for anywhere from one night
-            to several months. In addition to factors such as location and price, ratings play a significant role in
-            whether or not someone decides to stay in a certain AirBnB; customers rely heavily on what others think to
-            make decisions. What factors
-            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the
-            textual description of the listing correspond to its ratings?
+            San Francisco is one of the most popular cities to vacation, live, and work in, and the city attracts people from all around the world. AirBnBs have become an increasingly popular lodging option for people staying in the city for anywhere from one night
+            to several months. In addition to factors such as location and price, ratings play a significant role in whether or not someone decides to stay in a certain AirBnB; customers rely heavily on what others think to make decisions. What factors
+            distinguish a highly rated listing from a poorly rated one? How do characteristics about the host and the textual description of the listing correspond to its ratings?
         </p>
 
         <p class="bodyText">
-            The map below shows all current AirBnB listings in the city of San Francisco. AirBnBs with a rating of above
-            90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red.
-            Unrated listings are shown in gray.
+            The map below shows all current AirBnB listings in the city of San Francisco. AirBnBs with a rating of above 90 are shown in green, ratings above 70 are shown in yellow, and ratings of 70 and below are shown in red. Unrated listings are shown in gray.
             For the purposes of this article, we define a poor rating as one that is 70 or below.
         </p>
         <p class="bodyText">
-            Play around with the slider below to view listings with different ratings. Click on a point to learn more
-            about it.
+            Play around with the slider below to view listings with different ratings. Click on a point to learn more about it.
         </p>
 
         <!-- q1 viz -->
@@ -61,9 +53,8 @@
             <h3>
                 </br>AirBnB rating range</br>
             </h3>
-            <input id="slider" class="thin cycle-marker" data-role="doubleslider" data-min="1" data-value-min="20"
-                data-value-max="70" data-hint-position-min="bottom" data-hint-position-max="top" data-hint-always="true"
-                data-cls-hint="bg-cyan fg-white" data-cls-complete="bg-cyan" data-cls-min-max="text-bold" />
+            <input id="slider" class="thin cycle-marker" data-role="doubleslider" data-min="1" data-value-min="20" data-value-max="70" data-hint-position-min="bottom" data-hint-position-max="top" data-hint-always="true" data-cls-hint="bg-cyan fg-white" data-cls-complete="bg-cyan"
+                data-cls-min-max="text-bold" />
             <div class="legend">
                 <ul>
                     <li><span class="red"></span> &#8804; 70%</li>
@@ -89,49 +80,32 @@
         </script>
 
         <div class="bodyText">
-            The majority of rated AirBnBs have a rating of at least 90, and there are listings with ratings of under 70
-            and below scattered across the city. While there are no glaring patterns in the location of poorly rated
-            listings, it seems that there is a slightly
-            higher density of AirBnBs with poor ratings near the northeast of the city, in the Downtown/Civic Center
-            neighborhood.
+            The majority of rated AirBnBs have a rating of at least 90, and there are listings with ratings of under 70 and below scattered across the city. While there are no glaring patterns in the location of poorly rated listings, it seems that there is a slightly
+            higher density of AirBnBs with poor ratings near the northeast of the city, in the Downtown/Civic Center neighborhood.
         </div>
 
         <div id="q2_container">
             <h2>What leads to a higher rating?</h2>
-            <div class="bodyText">In the next part of our study, we wanted to understand why certain AirBnBs have a
-                higher or lower rating than other AirBnBs. To examine this, we also grouped the AirBnBs by neighborhood,
-                in order to better see the distributions of the ratings across the neighborhoods. </div>
-            <h3>Host Response Rate vs. Rating </h3>
-            <div id="picasso_container" style="height: 100%; position: relative;"></div>
-            <div class="bodyText">Figure 2: Through this chart, we can see that hosts that have a high level of
-                interactivity, have a wider range of ratings. In constrast, hosts with lower levels of interactivity
-                have a smaller range in AirBnB scores. The range of ratings for lower response rates is higher than the
-                range of ratings for higher reponse rates. There could be some underlying factors that contribute to
-                this. For example, hosts that respond often might use language that could be offensive to the AirBnB
-                guests. From this, it seems like slow response rates of AirBnB hosts won't affect the ratings adversely.
+            <div class="bodyText">In the next part of our study, we wanted to understand why certain AirBnBs have a higher or lower rating than other AirBnBs. To examine this, we also grouped the AirBnBs by neighborhood, in order to better see the distributions of the ratings
+                across the neighborhoods. </div>
+            <!-- <h3>Host Response Rate vs. Rating </h3> -->
+            <div id="picasso_container2" style="height: 80%; width:40%; float: left; position: relative;"></div>
+            <div id="picasso_container" style="height: 80%; position: relative; width:60%; float:right;"></div>
+            <div class="bodyText">Figure 2: Through this chart, we can see that hosts that have a high level of interactivity, have a wider range of ratings. In constrast, hosts with lower levels of interactivity have a smaller range in AirBnB scores. The range of ratings
+                for lower response rates is higher than the range of ratings for higher reponse rates. There could be some underlying factors that contribute to this. For example, hosts that respond often might use language that could be offensive to
+                the AirBnB guests. From this, it seems like slow response rates of AirBnB hosts won't affect the ratings adversely.
             </div>
-            <h3>Minimum Nights vs. Rating </h3>
-            <div id="picasso_container2" style="height: 100%; position: relative;"></div>
-            <div class="bodyText">Figure 3: We then wanted to understand if the minimum number of nights that the guests
-                had to stay in the AirBnB affected the rating of the AirBnB. Notice that most of the minimum number of
-                nights center around a few days or monthly basis. The AirBnBs with a high number of minimum nights (more
-                than 1 month), has a lower range in the ratings, whereas there is a lot more variance in ratings for
-                AirBnBs with shorter minimum night stays. A possible explanation for this could be that there is less
-                maintenance involved if guests stay for a longer time (such as cleaning of the AirBnB) and there could
-                be more ammenities available which could lead to higher ratings by the guests that stay in those places.
+            <!-- <h3>Minimum Nights vs. Rating </h3> -->
+            <div class="bodyText">Figure 3: We then wanted to understand if the minimum number of nights that the guests had to stay in the AirBnB affected the rating of the AirBnB. Notice that most of the minimum number of nights center around a few days or monthly basis.
+                The AirBnBs with a high number of minimum nights (more than 1 month), has a lower range in the ratings, whereas there is a lot more variance in ratings for AirBnBs with shorter minimum night stays. A possible explanation for this could
+                be that there is less maintenance involved if guests stay for a longer time (such as cleaning of the AirBnB) and there could be more ammenities available which could lead to higher ratings by the guests that stay in those places.
             </div>
             <div class="bodyText"> </div>
-            <div class="bodyText"> Figures 2 indicates that AirBnBs with a lower host response rate tend to have a
-                smaller range of ratings with a higher median rating. Figure 3 indicateds that AirBnBs that have higher
-                minimum night stays tend to have a
-                smaller range of ratings with a higher median rating. Overall this indicates possible ways that AirBnB
-                hosts can have higher ratings. This leads to the question of if hosts can change anything else in their
-                listings to get a higher rating.
+            <div class="bodyText"> Figures 2 indicates that AirBnBs with a lower host response rate tend to have a smaller range of ratings with a higher median rating. Figure 3 indicateds that AirBnBs that have higher minimum night stays tend to have a smaller range of ratings
+                with a higher median rating. Overall this indicates possible ways that AirBnB hosts can have higher ratings. This leads to the question of if hosts can change anything else in their listings to get a higher rating.
             </div>
             <div class="bodyText"> </div>
-            <div class="bodyText">One of the biggest parts of the listing that hosts have control over is the
-                description of their listing. In the next section, we explored how the descriptions of the AirBnBs
-                affected their ratings.
+            <div class="bodyText">One of the biggest parts of the listing that hosts have control over is the description of their listing. In the next section, we explored how the descriptions of the AirBnBs affected their ratings.
             </div>
 
             <script src="https://unpkg.com/picasso.js">
@@ -183,20 +157,12 @@
             </div> -->
         </div>
         <div class="bodyText">
-            Given all this context, let's take a deeper dive into what hosts are saying in the best and worst AirBnBs.
-            We looked at trigrams -- or sets of three words -- in these clusters: we defined the "low-rated" properties
-            to have a score of less than 70, and
-            a "high-rated" property to have the max score (the most commmon). We listed out trigrams that were mututally
-            exclusive (i.e appear in only the top or bottom buckets). Interestingly, there's a fairly noticable
-            difference.
+            Given all this context, let's take a deeper dive into what hosts are saying in the best and worst AirBnBs. We looked at trigrams -- or sets of three words -- in these clusters: we defined the "low-rated" properties to have a score of less than 70, and
+            a "high-rated" property to have the max score (the most commmon). We listed out trigrams that were mututally exclusive (i.e appear in only the top or bottom buckets). Interestingly, there's a fairly noticable difference.
         </div>
         <div class="bodyText">
-            We found that the worst rated AirBnBs typically advertised that they host entrepreneurs, and were a "startup
-            community." In general, these tend to be hacker houses: they're cramped, dorm-like, and expensive. In fact,
-            some report cockroaches, unsafe environments,
-            and price gouging. Problems include issues with electric wiring, fire safety, and gas odors. A report in
-            Reuters suggested that these facilities take affordable housing and make it unaffordable; capitalizing on
-            enterprising individuals moving
+            We found that the worst rated AirBnBs typically advertised that they host entrepreneurs, and were a "startup community." In general, these tend to be hacker houses: they're cramped, dorm-like, and expensive. In fact, some report cockroaches, unsafe environments,
+            and price gouging. Problems include issues with electric wiring, fire safety, and gas odors. A report in Reuters suggested that these facilities take affordable housing and make it unaffordable; capitalizing on enterprising individuals moving
             to San Francisco to build a better future.
         </div>
         <div style="position:relative;" id="q3_bad_container">

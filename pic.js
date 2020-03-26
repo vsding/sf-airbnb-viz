@@ -52,28 +52,24 @@ let plot_chart2 = data => {
       },
       components: [
         // {
-        //   type: 'legend-cat',
-        //   scale: 'col',
-        //   dock: 'right',
-        //   brush: {
-        //     trigger: [
-        //       {
+        // type: 'legend-cat',
+        // scale: 'col',
+        // dock: 'right',
+        // brush: {
+        //     trigger: [{
         //         contexts: ['highlight'],
         //         on: 'tap',
         //         action: 'toggle'
-        //       }
-        //     ],
-        //     consume: [
-        //       {
+        //     }],
+        //     consume: [{
         //         context: 'highlight',
         //         style: {
-        //           inactive: {
-        //             opacity: 0.4
-        //           }
+        //             inactive: {
+        //                 opacity: 0.4
+        //             }
         //         }
-        //       }
-        //     ]
-        //   }
+        //     }]
+        // }
         // },
 
         {
@@ -110,7 +106,7 @@ let plot_chart2 = data => {
               {
                 contexts: ['highlight'],
                 on: 'tap',
-                action: 'none',
+                action: 'toggle',
                 data: ['fill']
               }
             ],
@@ -126,11 +122,38 @@ let plot_chart2 = data => {
             ]
           }
         }
+        // {
+        //   type: 'text',
+        //   text: 'Rating',
+        //   anchor: 'center',
+        //   dock: 'left',
+        //   style: {
+        //     text: { fontSize: '16px' }
+        //   }
+        // },
+        // {
+        //   type: 'text',
+        //   text: 'Minimum nights',
+        //   anchor: 'center',
+        //   dock: 'bottom',
+        //   style: {
+        //     text: { fontSize: '16px' }
+        //   }
+        // },
+        // {
+        //   type: 'text',
+        //   text: 'Rating vs. Minimum Nights',
+        //   anchor: 'center',
+        //   dock: 'top',
+        //   style: {
+        //     text: { fontSize: '18px' }
+        //   }
+        // }
       ]
     }
   });
   pic1.brush('highlight').link(pic2.brush('highlight'));
-  pic2.brush('highlight').link(pic1.brush('highlight'));
+  // pic2.brush('highlight').link(pic1.brush('highlight'));
 };
 
 //#picasso_container  neighbourhood  review_scores_rating host_response_rate
@@ -189,11 +212,6 @@ let plot_chart = data => {
           }
         },
         {
-          type: 'text',
-          scale: 'yy',
-          dock: 'left'
-        },
-        {
           type: 'axis',
           scale: 'yy',
           dock: 'left'
@@ -243,6 +261,34 @@ let plot_chart = data => {
             ]
           }
         }
+        // {
+        //     type: 'text',
+        //     text: 'Rating',
+        //     anchor: 'center',
+        //     dock: 'left',
+        //     style: {
+        //         text: { fontSize: '16px' }
+
+        //     }
+        // },
+        // {
+        //   type: 'text',
+        //   text: 'Response rate',
+        //   anchor: 'center',
+        //   dock: 'bottom',
+        //   style: {
+        //     text: { fontSize: '16px' }
+        //   }
+        // },
+        // {
+        //   type: 'text',
+        //   text: 'Rating vs. Host Response Rate',
+        //   anchor: 'center',
+        //   dock: 'top',
+        //   style: {
+        //     text: { fontSize: '18px' }
+        //   }
+        // }
       ]
     }
   });
