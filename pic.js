@@ -189,6 +189,11 @@ let plot_chart = data => {
           }
         },
         {
+          type: 'text',
+          scale: 'yy',
+          dock: 'left'
+        },
+        {
           type: 'axis',
           scale: 'yy',
           dock: 'left'
